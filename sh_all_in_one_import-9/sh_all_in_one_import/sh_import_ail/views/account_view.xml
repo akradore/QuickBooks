@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+	<!-- ACCOUNT INVOICE FORM VIEW -->
+	<record id="sh_inherit_invoice_form_for_import" model="ir.ui.view">
+		<field name="name">sh.inherit.invoice.form.for.import</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//header/button[@name='invoice_cancel']" position="after">
+				<button name="sh_import_ail" string="Import Invoice Lines"  type="object"  states="draft" groups="sh_all_in_one_import.sh_import_ail_group" class="btn-primary" context="{'sh_inv_id':id}" />
+			</xpath>
+		</field>
+	</record>
+	
+	<!-- ACCOUNT VENDOR BILLS FORM VIEW -->
+	<record id="sh_inherit_invoice_supplier_form_for_import" model="ir.ui.view">
+		<field name="name">sh.inherit.invoice.supplier.form.for.import</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_supplier_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//header/button[@name='invoice_cancel']" position="after">
+				<button name="sh_import_ail" string="Import Bill Lines"  type="object"  states="draft" groups="sh_all_in_one_import.sh_import_ail_group" class="btn-primary" context="{'sh_inv_id':id}" />
+			</xpath>
+		</field>
+	</record>
+</data>
+</openerp>
+  

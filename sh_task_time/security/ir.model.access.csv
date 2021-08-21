@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_task_time_account_line,access_task_time_account_line,model_task_time_account_line,project.group_project_user,1,1,1,1
+
+

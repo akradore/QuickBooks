@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+        <record id="sms_report_inherited_in_twilio_form_view" model="ir.ui.view">
+            <field name="name">wk.sms.repor.form.inherited.Twilio</field>
+            <field name="model">sms.report</field>
+            <field name="inherit_id" ref="sms_notification.sms_report_form_view"/>          
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sms_info']" position="inside">
+                    <group string="Twilio Related Inforamtion" attrs="{'invisible':[('sms_gateway','!=','twilio')]}">
+                        <field name="id" invisible="1"/>
+                        <field name="sms_gateway" invisible="1"/>
+                        <field name="twilio_sms_id" readonly="1"/>
+                        <field name="client_account_sid" readonly="1"  />
+                        <field name="client_auth_token" readonly="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

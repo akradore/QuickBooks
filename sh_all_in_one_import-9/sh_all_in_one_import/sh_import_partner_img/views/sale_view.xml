@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>	
+<!-- SALE ORDER SIDE MENU -->
+  <menuitem 
+  	name="Import Customer Image"
+  	action="sh_import_partner_img_action" 
+  	id="sh_import_partner_img_menu"
+  	parent="base.menu_sales"
+  	groups="sh_all_in_one_import.sh_import_partner_img_group" 
+	sequence="3"  	
+  
+  />
+
+</data>
+</openerp>
+ 

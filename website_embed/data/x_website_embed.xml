@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="1">
+
+        <record id="model_x_website_embed" model="ir.model">
+            <field name="name">x_website_embed</field>
+            <field name="model">x_website_embed</field>
+            <field name="state">manual</field>
+        </record>
+
+        <record id="field_x_name" model="ir.model.fields">
+            <field name="name">x_name</field>
+            <field name="field_description">Name</field>
+            <field name="ttype">char</field>
+            <field name="state">manual</field>
+            <field name="select_level">0</field>
+            <field name="required" eval="1"/>
+            <field name="model_id" ref="model_x_website_embed"/>
+        </record>
+
+        <record id="field_x_contents" model="ir.model.fields">
+            <field name="name">x_contents</field>
+            <field name="field_description">Contents</field>
+            <field name="ttype">text</field>
+            <field name="state">manual</field>
+            <field name="select_level">0</field>
+            <field name="required" eval="1"/>
+            <field name="model_id" ref="model_x_website_embed"/>
+        </record>
+
+    </data>
+</openerp>

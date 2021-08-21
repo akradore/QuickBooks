@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+	<!-- INVENTORY SIDE MENU -->
+    <menuitem 
+    	id="sh_import_int_transfer_menu"
+        name="Import Internal Transfer"
+        action="sh_import_int_transfer_action"
+  		groups="sh_all_in_one_import.sh_import_int_transfer_group"         
+        parent="stock.menu_stock_inventory_control"
+        sequence="3"/>	
+
+</data>
+</openerp>
+

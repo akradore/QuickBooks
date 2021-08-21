@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="assets_frontend" inherit_id="website.assets_frontend" name="Appointment Front-end assets">
+            <xpath expr="." position="inside">
+                <link rel='stylesheet' href='/kanak_services_appointment/static/src/css/appointment.css'/>
+                <link rel="stylesheet" href="/kanak_services_appointment/static/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"/>
+                <script type="text/javascript" src="/kanak_services_appointment/static/lib/moment/moment.js"></script>
+                <script type="text/javascript" src="/kanak_services_appointment/static/src/js/appointment.js"></script>
+                <script type="text/javascript" src="/kanak_services_appointment/static/lib/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"/>
+            </xpath>
+        </template>
+
+        <template id="kanak_select_partner" name="Select Member">
+            <t t-call="website.layout">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 mt32 text-center">
+                            <h3>WE WHOULD LOVE TO TALK TO YOU!</h3>
+                            <h6>
+                                At <t t-esc="website.sudo().user_id.company_id.name"/> we value your openion.If you have any questions, suggestions or concerns please feel free to contact us through mail, email or our main phone number.Don't forget to follow us on the social websites we blogns to.
+                            </h6>
+                        </div>
+                        <div class="panel panel-default col-md-10 col-md-offset-1 mt32">
+                            <div class="panel-body kanak-panel-body">
+                                <div class="row">
+                                    <p class="mt16 mb16 col-md-11 col-md-offset-1">Please select one of our team members.</p>
+                                    <div class="panel panel-default col-md-5 col-md-offset-1" t-foreach="partners" t-as="partner">
+                                        <div class="panel-body kanak-card-body">
+                                            <div class="col-md-5">
+                                                <img class="kanak-img-circle" t-att-src="'data:image/png;base64,%s' % partner.image_small"/>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <span class="text-kanak-primary">
+                                                    <strong t-esc="partner.name"></strong>
+                                                </span>
+                                                <p>
+                                                    <em class="text-kanak-danger" t-esc="partner.function"></em>
+                                                </p>
+                                                <a class="btn btn-default btn-sm btn-kanak" t-attf-href="/kanak/member/appointment/#{partner.id}">
+                                                    Select
+                                                    <i class="fa fa-chevron-circle-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="kanak_member_calendar" name="Member Calendar">
+            <t t-call="website.layout">
+                <div class="container">
+                    <div class="row" style="background-image: url('/kanak_services_appointment/static/src/css/../img/graphy1.png');">
+                        <div class="col-md-10 col-md-offset-1 mt32 text-center">
+                            <h3>BOOKING CALENDAR</h3>
+                            <h6>
+                                You may
+                                <b>click on the time</b>
+                                you wish to make your appointment or
+                                <b>watch instruction video.</b>
+                            </h6>
+                            <a class="btn btn-default btn-sm btn-kanak" href="#">
+                                <i class="fa fa-play-circle-o"/>
+                                HOW TO BOOK VIDEO
+
+                            </a>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1 mt32 text-center">
+                            <div class="col-md-12 kanak_services_appointment_header">
+                                <form class="form-inline appointment_form mt32" t-attf-action="/kanak/member/appointment/#{partner.id}" method="POST">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="form-group">
+                                        <label>Time Zone:</label>
+                                        <select name="timezone" t-attf-class="form-control appointment_timezone #{set_timezone and 'default_timezone' or ''}">
+                                            <t t-foreach="partner.get_tz()" t-as="timezone">
+                                                <t t-if="set_timezone == timezone">
+                                                    <option t-esc="timezone" selected="selected"></option>
+                                                </t>
+                                                <t t-if="set_timezone != timezone">
+                                                    <option t-att-data="partner.get_tz_offset(timezone)" t-esc="timezone"></option>
+                                                </t>
+                                            </t>
+                                        </select>
+                                        <label>Jump To date:</label>
+                                        <input type="hidden" id="jump_min_date" name="Min Date" t-att-value="partner.min_date"></input>
+                                        <input type="hidden" id="jump_max_date" name="Max Date" t-att-value="partner.max_date"></input>
+                                        <div class='input-group date jump_to_date'>
+                                            <input type='text' name="jump_date" t-att-value="jump_date" class="form-control jump_date"/>
+                                            <span class="input-group-addon">
+                                                <span class="fa fa-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div id="appointment" class="mt32 table-responsive" style="background: rgba(255,255,255,0.65); border-radius: 20px;">
+                                <div t-attf-class="#{appointment_available and 'available_msg' or 'no_available_msg'}"><span>No Availability</span></div>
+
+                                <form action="/shop/cart/update" class="js_add_cart_variants services_form_cart" t-att-data-attribute_value_ids="partner.product_id.product_variant_ids.ids" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                  <input type="hidden" class="product_id" name="product_id" t-att-value="int(partner.product_id.product_variant_ids[0]) if len(partner.product_id.product_variant_ids) == 1 else '0'"/>
+                                  <input type="hidden" class="js_quantity form-control" data-min="1" name="add_qty" value="1"/>
+                                  <input type="hidden" name="appointment_with" t-att-value="partner.id"/>
+                                  <input type="hidden" name="date" value=""/>
+                                  <input type="hidden" name="time" value=""/>
+                                  <input type="hidden" name="timezone" value=""/>
+                                </form>
+                                <table class="table table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th class="kanak_table_header kanak_direction">
+                                                <ul t-if="pager['page_count'] > 1" t-attf-class="#{ classname or '' } pagination" t-att-style="style or ''">
+                                                    <li t-att-class=" 'disabled' if pager['page']['num'] == 1 else '' ">
+                                                        <a class="fa fa-chevron-circle-left fa-2x kanak-fa" t-att-href=" pager['page_previous']['url'] if pager['page']['num'] != 1 else ''"></a>
+                                                    </li>
+                                                </ul>
+                                            </th>
+                                            <th t-foreach="dates" t-as="a_date" class="kanak_table_header">
+                                                <a href="#" class="btn btn-kanak-primary">
+                                                    <h6 t-if="a_date[0] == 'Mon'"><b>Mon</b></h6>
+                                                    <h6 t-if="a_date[0] == 'Tue'"><b>Tue</b></h6>
+                                                    <h6 t-if="a_date[0] == 'Wed'"><b>Wed</b></h6>
+                                                    <h6 t-if="a_date[0] == 'Thu'"><b>Thu</b></h6>
+                                                    <h6 t-if="a_date[0] == 'Fri'"><b>Fri</b></h6>
+                                                    <h6 t-if="a_date[0] == 'Sat'"><b>Sat</b></h6>
+                                                    <h6 t-if="a_date[0] == 'Sun'"><b>Sun</b></h6>
+                                                    <h6 t-esc="a_date[1]" style="font-weight: 700;"/>
+                                                </a>
+                                            </th>
+                                            <th class="kanak_table_header kanak_direction">
+                                                <ul t-if="pager['page_count'] > 1" t-attf-class="#{ classname or '' } pagination" t-att-style="style or ''">
+                                                    <li t-att-class=" 'disabled' if pager['page']['num'] == pager['page_count'] else '' ">
+                                                        <a class="fa fa-chevron-circle-right fa-2x kanak-fa" t-att-href="pager['page_next']['url'] if pager['page']['num'] != pager['page_count'] else ''"></a>
+                                                    </li>
+                                                </ul>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody t-attf-class="#{appointment_available and 'available_body' or 'no_available_body'}">
+                                      <div class="oe_website_sale_ap">
+                                          <t t-foreach="max_range" t-as="total">
+                                            <tr>
+                                              <th scope="row"></th>
+                                              <t t-foreach="dates" t-as="a_date">
+                                                <td t-if="a_date" style="padding:0">
+                                                  <t t-if="not appointment">
+
+                                                   <!--  <form class="form-inline mb0 mt0" t-attf-action="/kanak/member/book/#{partner.id}" method="POST">
+                                                        <input type="hidden" name="date" t-att-value="a_date[1]"/>
+                                                        <input type="hidden" name="time" t-att-value="total"/>
+                                                        <input type="hidden" name="timezone" t-att-value="set_timezone"/>
+                                                        <button type="submit" t-esc="total" t-attf-class="btn btn-link #{total in a_date[2] and 'kanak-available' or 'kanak-not-available'}"/>
+                                                    </form> -->
+
+                                                    <!-- <input type="hidden" name="date" t-att-value="a_date[1]"/>
+                                                    <input type="hidden" name="time" t-att-value="total"/>
+                                                    <input type="hidden" name="timezone" t-att-value="set_timezone"/> -->
+                                                    <button t-esc="total" t-attf-class="btn btn-link a-submit #{total in a_date[2] and 'kanak-available' or 'kanak-not-available'}" t-att-data-date="a_date[1]" t-att-data-time="total"/>
+                                                  </t>
+                                                  <t t-if="appointment">
+                                                    <form class="form-inline mb0 mt0" t-attf-action="/kanak/appointment/reschedule/pre_conformation/#{partner.id}/#{appointment.access_token}" method="POST">
+                                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                        <input type="hidden" name="date" t-att-value="a_date[1]"/>
+                                                        <input type="hidden" name="time" t-att-value="total"/>
+                                                        <input type="hidden" name="timezone" t-att-value="set_timezone"/>
+                                                        <button type="submit" t-esc="total" t-attf-class="btn btn-link #{total in a_date[2] and 'kanak-available' or 'kanak-not-available'}"/>
+                                                    </form>
+                                                  </t>
+                                                </td>
+                                              </t>
+                                              <th scope="row"></th>
+                                            </tr>
+                                          </t>
+                                      </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="kanak_member_book" name="Booking">
+            <t t-call="website.layout">
+                <div class="panel panel-default col-md-10 col-md-offset-1 mt32">
+                    <div class="panel-body">
+                        <div class="row">
+                            <form class="form-horizontal" t-attf-action="/kanak/confirm/booking/#{partner.id}" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="date" t-att-value="date"/>
+                                <input type="hidden" name="time" t-att-value="time"/>
+                                <input type="hidden" name="timezone" t-att-value="timezone"/>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Appointment:</label>
+                                    <div class="col-sm-10">
+                                        <strong t-esc="booking"></strong>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">* Phone Number:</label>
+                                    <div class="col-sm-10">
+                                        <input name="phone" type="text" class="form-control" required=""/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">* First Name:</label>
+                                    <div class="col-sm-10">
+                                        <input name="first_name" type="text" class="form-control" required=""/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">* Last Name:</label>
+                                    <div class="col-sm-10">
+                                        <input name="last_name" type="text" class="form-control" required=""/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">* Email:</label>
+                                    <div class="col-sm-10">
+                                        <input name="email" type="email" class="form-control" required=""/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Team member:</label>
+                                    <div class="col-sm-10" t-esc="partner.name"/>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-kanak">Confirm Booking</button>
+                                        <button type="submit" class="btn btn-kanak">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="appointment_reschedule" name="reschedule">
+            <t t-call="website.layout">
+                <div class="panel panel-default col-md-10 col-md-offset-1 mt32">
+                    <div class="panel-body">
+                        <div t-if="msg" class="row">
+                            <p t-esc="msg"></p>
+                        </div>
+                        <div t-if="not msg" class="row">
+                            <form class="form-horizontal" t-attf-action="/kanak/confirm/reschedule/#{partner.id}/#{appointment.access_token}" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="date" t-att-value="date"/>
+                                <input type="hidden" name="time" t-att-value="time"/>
+                                <input type="hidden" name="timezone" t-att-value="timezone"/>
+                                <p>You are about to change the start time of your booking.</p>
+                                <p>Old start time: <t t-esc="appointment.get_user_tz_date()"/></p>
+                                <p>New start time: <t t-esc="date_appointment"/></p>
+                                <p>Time Zone: <t t-esc="timezone"/></p>
+                                <p>Are you sure you wish to reschedule your booking?</p>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-kanak">Confirm Reschedule</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="appointment_cancel" name="reschedule">
+            <t t-call="website.layout">
+                <div class="panel panel-default col-md-10 col-md-offset-1 mt32">
+                    <div class="panel-body">
+                        <div t-if="msg" class="row">
+                            <p t-esc="msg"></p>
+                        </div>
+                        <div t-if="not msg" class="row">
+                            <form class="form-horizontal" t-attf-action="/kanak/confirm/cancel/#{partner.id}/#{appointment.access_token}" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="col-md-4">
+                                    <p>You are about to cancel the following booking:</p>
+                                    <strong t-esc="date_appointment"/>
+                                    <p>Please give a reason for cancelling this booking:</p>
+                                    <input class="form-control mt8" name="reason" style="height:100px"></input>
+                                    <p>Are you sure you wish to cancel this appointment?</p>
+                                    <button type="submit" class="btn btn-kanak mt8">Confirm Cancellation</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="appointment_thankyou" name="Confirmed Booking">
+            <t t-call="website.layout">
+                <div class="panel panel-default col-md-10 col-md-offset-1 mt32">
+                    <div class="panel-body">
+                        <div class="row text-kanak-primary">
+                            <p>Thank You
+                                <t t-esc="first_name"/></p>
+                            <p>Your appointment is booked for
+                                <t t-esc="date"/>
+                                (<t t-esc="timezone"/>).</p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="appointment_cancel_thankyou" name="Cancel Booking">
+            <t t-call="website.layout">
+                <div class="panel panel-default col-md-10 col-md-offset-1 mt32">
+                    <div class="panel-body">
+                        <div class="row text-kanak-primary">
+                            <p>Thank You. Your appointment has been cancelled.</p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+      <template id="appointment_cart" inherit_id="website_sale.cart_lines" name="Appointment Shopping Cart">
+        <xpath expr="//td[3]" position="replace">
+          <td t-if="line.product_id.product_tmpl_id">
+            <div>
+              <a t-attf-href="/shop/product/#{ slug(line.product_id.product_tmpl_id) }">
+                <strong t-esc="line.product_id.with_context(display_default_code=False).display_name"/>
+              </a>
+            </div>
+            <div class="text-muted" t-esc="'\n'.join(line.name.splitlines()[1:])"/>
+            <div class="text-muted" t-foreach="line.appointment_id" t-as="app">
+              <b>Appointment Datetime:</b> <t t-esc="app.click_time_dt"/>
+              <br />
+              <b>Appointment with:</b> <t t-esc="app.app_partner_id.name"/>
+            </div>
+          </td>
+        </xpath>
+        <xpath expr="//table[@id='cart_products']//tbody" position="inside">
+            <tr>
+              <td colspan="2">
+                <p style="margin-bottom: 0px;">
+                  <label for="order_note" style="vertical-align: top;">Notes:</label>
+                  <textarea id="order_note" rows="2" cols="65" style="max-width: 500px; max-height: 80px;" name="order_note" t-att-data-so="website_sale_order.name" placeholder="Your comments..."><t t-esc="website_sale_order.note"/></textarea>
+                </p>
+              </td>
+            </tr>
+        </xpath>
+      </template>
+
+      <template id="appointment_payment" inherit_id="website_sale.payment" name="Appointment Payment">
+        <xpath expr="//td[3]" position="replace">
+          <td t-if="line.product_id.product_tmpl_id">
+             <strong t-field="line.product_id.with_context(display_default_code=False).display_name"/>
+            <div class="text-muted" t-foreach="line.appointment_id" t-as="app">
+              <b>Appointment Datetime:</b> <t t-esc="app.click_time_dt"/>
+              <br />
+              <b>Appointment with:</b> <t t-esc="app.app_partner_id.name"/>
+            </div>
+          </td>
+        </xpath>
+      </template>
+
+    <template id="website_sale.continue_shopping" inherit_id="website_sale.cart" customize_show="True" name="Continue Shopping Button">
+      <xpath expr="//a[@href='/shop/checkout']" position="before">
+        <a href="/kanak/team" class="btn btn-default mb32"><span class="fa fa-long-arrow-left"/> <span class="hidden-xs">Continue Shopping</span><span class="visible-xs-inline">Continue</span></a>
+      </xpath>
+    </template>
+
+    <template id="service_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//span[@t-field='l.name']" position="after">
+            <div t-foreach="l.appointment_id" t-as="app">
+              Appointment Datetime: <t t-esc="app.click_time_dt"/><br />
+              Appointment with: <t t-esc="app.app_partner_id.name"/>
+            </div>
+        </xpath>
+    </template>
+
+    </data>
+</openerp>

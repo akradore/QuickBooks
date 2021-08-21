@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>	
+
+	<record id="sh_import_ail_wizard" model="ir.ui.view">
+		<field name="name">sh.import.ail.wizard</field>
+		<field name="model">import.ail.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Import Invoice Lines">
+				<group>				
+					<field name="import_type" widget="radio"/>
+					<field name="product_by" widget="radio"/>
+					<field name="file"/>
+				</group>				
+			<footer>
+				<button name="import_ail_apply" string="Apply" type="object" class="btn-primary" />
+				<button string="Cancel" class="btn-default" special="cancel" />
+			</footer>
+							
+			</form>
+		</field>
+	</record>
+
+	  <record id="sh_import_ail_action" model="ir.actions.act_window">
+	  	<field name="name">Import Invoice/Bill Lines</field>
+	  	<field name="res_model">import.ail.wizard</field>
+	  	<field name="view_type">form</field>
+	  	<field name="view_id" ref="sh_import_ail_wizard"/>
+	  	<field name="target">new</field>
+	  </record>
+	
+</data>	
+</openerp>

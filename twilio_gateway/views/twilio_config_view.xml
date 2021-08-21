@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="sms_mail_server_twilio_formview" model="ir.ui.view">
+            <field name="name">sms.mail.server.twilio.config</field>
+            <field name="model">sms.mail.server</field>   
+            <field name="inherit_id" ref="sms_notification.sms_mail_server_formview"/>                     
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='conn_info']" position="after">
+                    <group string='Security And Authentication' attrs="{'invisible':[('gateway','!=','twilio')]}">
+                        <field name="twilio_number" placeholder="Twilio Phone Number(e.g. +12044993370)" attrs="{'required':[('gateway','=','twilio')]}"/>
+                        <field name="account_sid" attrs="{'required':[('gateway','=','twilio')]}"/>
+                        <field name="auth_token" attrs="{'required':[('gateway','=','twilio')]}"/>
+                        <button name="test_conn_twilio" string="Test Connection" type="object"  icon="gtk-network"/>  
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

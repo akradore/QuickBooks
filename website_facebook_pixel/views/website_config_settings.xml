@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="view_website_config_settings_inherit_website_facebook_pixel" model="ir.ui.view">
+            <field name="name">view.website.config.settings.inherit.website.facebook.pixel</field>
+            <field name="model">website.config.settings</field>
+            <field name="inherit_id" ref="website.view_website_config_settings"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='website_name']" position="after">
+                    <label for="facebook_pixel_key"/>
+                    <div name="facebook_pixel_key">
+                        <div>
+                            <div name="facebook_pixel_key" class="oe_inline">
+                                <field name="facebook_pixel_key" placeholder="XXXXXXXXXXXXXXX"/>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

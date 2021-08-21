@@ -1,0 +1,6 @@
+Name,Can be Sold?,Can be Purchased?,Product Type,Category,Internal Reference,Barcode,Sales Price,Cost,Unit of Measure,Purchase Unit of Measure,Weight,Volume,Customer Taxes,Vendor Taxes,Invoicing Policy,Description for Customers,Quantity On Hand,image path/url
+sh product 10,,FALSE,Stockable Product,Saleable,Pro1_int_ref,22221212,10,11,foot(ft),foot(ft),15,16,"Standard rate sales (17.5%),Standard rate sales (20%),   Sales to customers in EC,",Zero rated purchases,Delivered quantities,sh product 1 desc,100,/home/odoo/Desktop/product img/4.jpg
+Product 2,,,,,pro2_int_ref,,20,21,,,25,26,,,,Product 2 desc,,/home/odoo/Desktop/product img/7.jpg
+Product 3,,,,,pro3_int_ref,12345,30,31,fdfdsfds,,35,36,,,,Product 3 desc,,
+Product 4,,,Stockable Product,,pro4_int_ref,,40,41,,,45,46,"Standard rate sales (17.5%),Standard rate sales (20%),   Sales to customers in EC,",,,Product 4 desc,,https://slack-files2.s3-us-west-2.amazonaws.com/avatars/2017-08-28/232381175025_31793c43d684e5a7c75a_512.png
+Product 5,,,,Software,pro5_int_ref,,50,51,,,55,56,,,Invoice based on time and material,Product 5 desc,,/home/odoo/Desktop/product img/1.jpeg

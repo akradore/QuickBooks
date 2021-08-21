@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+	<!-- PURCHASE ORDER SIDE MENU -->
+  <menuitem 
+  	name="Import Purchase Order"
+  	action="sh_import_po_action" 
+  	id="sh_import_po_menu" 
+  	parent="purchase.menu_procurement_management"
+  	groups="sh_all_in_one_import.sh_import_po_group" 
+	sequence="2"  
+  />
+  
+</data>
+</openerp>
+  

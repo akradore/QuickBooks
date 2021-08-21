@@ -1,0 +1,19 @@
+.openerp .oe_calendar_table .underline_color_green {
+  border-bottom: 4px solid #1b5e20 !important;
+}
+
+.openerp .oe_calendar_table .underline_color_red {
+    border-bottom: 4px solid #b71c1c;
+}
+
+.openerp .oe_calendar_table .calendar_color_green {
+    border-color: #1b5e20 !important;
+    background-color: #1b5e20 !important;
+    color: #fff;
+}
+
+.openerp .oe_calendar_table .calendar_color_red {
+  border-color: #b71c1c;
+  background-color: #b71c1c;
+  color: #fff;
+}

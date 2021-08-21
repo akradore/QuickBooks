@@ -1,0 +1,114 @@
+
+.kanak-not-available {
+    cursor: default;
+    pointer-events: none;
+    color: #777;
+}
+.kanak-available {
+    color: #045699;
+    text-decoration: none;
+}
+.kanak-available:hover  {
+    border: 1px dotted #045699;
+}
+.kanak_table_header {
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+}
+.kanak_direction {
+    vertical-align: middle !important;
+    width: 40px;
+}
+.kanak-fa {
+    top: 15px;
+    color: #DA7A0A !important;
+    text-decoration: none !important;
+}
+.text-kanak-primary {
+    color: #DA7A0A;
+    font-size: larger;
+}
+.text-kanak-danger {
+    color: #D62037;
+    font-weight: bold;
+}
+.kanak-card-body {
+    padding-left: 0;
+    padding-right: 0;
+}
+.kanak-panel-body {
+    padding-right: 5%;
+    padding-left: 0;
+}
+.btn-kanak-primary {
+    background-color: #DA7A0A;
+    border-color: #DA7A0A;
+    color: #FFF;
+}
+.btn-kanak {
+  border: 1px solid #DA7A0A;
+  color: #DA7A0A;
+  background-color: #fff;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  font-weight: bold;
+}
+.btn-kanak:hover,
+.btn-kanak:focus {
+  text-shadow: none;
+  border-color: #fff;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #DA7A0A;
+  color: #FFF;
+  background-image: none;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+}
+.kanak-img-circle {
+    border: 1px solid #eee !important;
+    width: 90px !important;
+    height: 90px !important;
+    background-color: #FFF;
+    border-radius: 50%;
+}
+.kanak_services_appointment_header {
+  
+    height: 100px;
+}
+
+th[scope='row'] {
+    border: 0 !important;
+}
+
+div.no_available_msg {
+	position: absolute;
+	top: 210px;
+	left: 25%;
+	width: 50%;
+	background-color: rgba(255,255,255,0.8);
+	color: black;
+	border: 1px solid black;
+	padding: 40px 5px;
+	text-align: center;
+    display: block;
+}
+
+div.available_msg {
+    display: none;
+}
+
+.no_available_body {
+    cursor: default;
+    pointer-events: none;
+    color: #777;
+    opacity: 0.2;
+}
+#appointment {
+
+  display: inline-flex;
+  }

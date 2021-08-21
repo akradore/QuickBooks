@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <!-- Partner Inherit Form view -->
+    <record id="view_partner_appointment" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='website']" position="after">
+                <field name="team_member" groups="kanak_services_appointment.group_appointment_avalable"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Appointment Configuration" attrs="{'invisible': [('team_member', '==', False)]}">
+                    <group>
+                        <group>
+                            <field name="product_id" />
+                            <field name="user_id" string="Related User" context="{'default_groups_ref': ['base.group_user']}" attrs="{'required': [('team_member', '==', True)]}"/>
+                            <field name="tz" attrs="{'required': [('team_member', '==', True)]}"/>
+                            <field name="minutes_slot"/>
+                            <field name="lunch_start" widget="float_time"/>
+                            <field name="lunch_end" widget="float_time"/>
+                        </group>
+                        <group>
+                            <field name="min_date"/>
+                            <field name="max_date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group col="2" colspan="1" name="weekdays">
+                            <field name="mon"/>
+                            <field name="tue"/>
+                            <field name="wed"/>
+                            <field name="thu"/>
+                            <field name="fri"/>
+                            <field name="sat"/>
+                            <field name="sun"/>
+                        </group>
+
+                        <group col="4" colspan="1" name="Time">
+                                <field name="mon_from" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('mon','==',False)]}"/>
+                                <span class="oe_grey">-</span>
+                                <field name="mon_to" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('mon','==',False)]}"/>
+                                <br/>
+                                <field name="tue_from" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('tue','==',False)]}"/>
+                                <span class="oe_grey">-</span>
+                                <field name="tue_to" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('tue','==',False)]}"/>
+                                <br/>
+                                <field name="wed_from" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('wed','==',False)]}"/>
+                                <span class="oe_grey">-</span>
+                                <field name="wed_to" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('wed','==',False)]}"/>
+                                <br/>
+                                <field name="thu_from" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('thu','==',False)]}"/>
+                                <span class="oe_grey">-</span>
+                                <field name="thu_to" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('thu','==',False)]}"/>
+                                <br/>
+                                <field name="fri_from" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('fri','==',False)]}"/>
+                                <span class="oe_grey">-</span>
+                                <field name="fri_to" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('fri','==',False)]}"/>
+                                <br/>
+                                <field name="sat_from" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('sat','==',False)]}"/>
+                                <span class="oe_grey">-</span>
+                                <field name="sat_to" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('sat','==',False)]}"/>
+                                <br/>
+                                <field name="sun_from" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('sun','==',False)]}"/>
+                                <span class="oe_grey">-</span>
+                                <field name="sun_to" widget="float_time" nolabel="1" class="oe_inline" attrs="{'invisible': [('sun','==',False)]}"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="My Appointments" attrs="{'invisible': [('team_member', '==', True)]}">
+                    <field name="attendees_ids">
+                        <tree>
+                            <field name="app_partner_id"/>
+                            <field name="app_date"/>
+                            <field name="app_duration"/>
+                            <field name="app_state"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="My Appointments" attrs="{'invisible': [('team_member', '==', False)]}">
+                    <field name="appointment_ids" context="{'default_type': 'appointment'}">
+                        <tree>
+                            <field name="attendee_ids"/>
+                            <field name="app_date"/>
+                            <field name="app_duration"/>
+                            <field name="app_state"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="My Exceptions" attrs="{'invisible': [('team_member', '==', False)]}">
+                    <field name="exception_ids" context="{'default_type': 'exception'}">
+                        <tree>
+                        <field name="name" string="Subject"/>
+                       <field name="allday" invisible="True"/>
+                       <field name="start_date" string="Date" invisible="1"/>
+                       <field name="start_datetime" string="Start"/>
+                       <field name="stop_datetime" string="End"/>
+                       <field name="location" invisible="1"/>
+                       <field name="show_as" invisible="1"/>
+                       <field name="class" string="Privacy" invisible="1"/>
+                       <field name="state" invisible="True"/>
+                       <field name="duration" invisible="1"/>
+                       <field name="number_of_days_temp"/>
+                       <field name="message_unread" invisible="1"/>
+                   </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem id="menu_apppointment_calendar" name="My Appointments" sequence="1"/>
+    </data>
+</openerp>

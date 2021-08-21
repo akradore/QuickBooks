@@ -1,0 +1,8 @@
+Purchase Order,Vendor,Order Date,Scheduled Date,Product,Description,Ordered Qty,Unit of Measure,Unit Price,Taxes,Scheduled Date
+po1,sh vendor 10,2018-08-25,2018-12-21,Apple In-Ear Headphones,Apple 1,10,Dozen(s),5000,Standard rate sales (20%),2018-10-21
+po1,,,,Processor Core i5 2.70 Ghz,,20,,,"Standard rate sales (17.5%),Standard rate sales (20%),   Sales to customers in EC,",2018-11-21
+po1,,,,Computer Case,,30,,,,2018-12-21
+po2,Think Big Systems,2018-08-22,,iPad Retina Display,,1,,,,
+po2,,,,Server,,2,,,,
+po2,,,,iPod,,3,,,,
+po3,Camptocamp,,,iMac,,33,,,,

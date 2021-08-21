@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>	
+
+	<record id="sh_import_inv_wizard" model="ir.ui.view">
+		<field name="name">sh.import.inv.wizard</field>
+		<field name="model">import.inv.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Import Invoice">
+				<group>				
+					<field name="import_type" widget="radio"/>
+					<field name="product_by" widget="radio"/>
+					<field name="invoice_type" widget="radio"/>
+					<field name="is_validate"/>
+					<field name="inv_no_type" widget="radio"/>
+					<field name="file"/>
+				</group>				
+			<footer>
+				<button name="import_inv_apply" string="Apply" type="object" class="btn-primary" />
+				<button string="Cancel" class="btn-default" special="cancel" />
+			</footer>
+							
+			</form>
+		</field>
+	</record>
+
+	  <record id="sh_import_inv_action" model="ir.actions.act_window">
+	  	<field name="name">Import Invoice</field>
+	  	<field name="res_model">import.inv.wizard</field>
+	  	<field name="view_type">form</field>
+	  	<field name="view_id" ref="sh_import_inv_wizard"/>
+	  	<field name="target">new</field>
+	  </record>
+	
+</data>	
+</openerp>

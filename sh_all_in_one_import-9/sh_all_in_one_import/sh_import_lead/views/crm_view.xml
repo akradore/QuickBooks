@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	
+
+  <menuitem 
+  	name="Import Leads"
+  	action="sh_import_lead_action" 
+  	id="sh_import_lead_menu" 
+  	parent="base.menu_sales"
+    sequence="2"  	
+  	groups="sh_all_in_one_import.sh_import_lead_group" 
+  
+  />
+
+
+</openerp>
+  

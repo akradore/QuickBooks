@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<openerp>
+    <data>
+        <record id="add_preferences_users" model="ir.ui.view">
+            <field name="name">Inheritance In SMS</field>
+            <field name="model">base.config.settings</field>
+            <field name="inherit_id" ref="base_setup.view_general_configuration"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/group" position="after">
+                    <group>
+                        <label for="id" string="SMS"/>
+                        <div name="sms">
+                            <div name="sms gateway">
+                                <field name="is_phone_code_enable"/>
+                                <label for="is_phone_code_enable"/>
+                                <p class="oe_inline oe_grey fa fa-info-circle"> If not enabled then it will pick country calling code from the country selected by the customer. In case, customer has not selected any country then it will pick country calling code from company's country.</p> 
+                                <div>
+                                    <button name="%(gateway_config)d" string="Configure SMS Gateway Account" type="action" class="oe_link"/>
+                                </div>
+                                <div attrs="{'invisible':[('is_twilio_in_addon','=',False)]}" >
+                                    <field name="is_twilio_in_addon" attrs="{'invisible':True}"  />
+                                    <field name="module_twilio_gateway" class="oe_inline" />
+                                    <label for="module_twilio_gateway" />
+                                </div>
+                                <div attrs="{'invisible':[('is_plivo_in_addon','=',False)]}" > 
+                                    <field name="is_plivo_in_addon" attrs="{'invisible':True}"/>   
+                                    <field name="module_plivo_gateway" class="oe_inline"  />
+                                    <label for="module_plivo_gateway" />
+                                </div>
+                                <div attrs="{'invisible':[('is_clicksend_in_addon','=',False)]}" > 
+                                    <field name="is_clicksend_in_addon" attrs="{'invisible':True}"/>   
+                                    <field name="module_clicksend_gateway" class="oe_inline"  />
+                                    <label for="module_clicksend_gateway" />
+                                </div>
+                                <div attrs="{'invisible':[('is_msg91_in_addon','=',False)]}" > 
+                                    <field name="is_msg91_in_addon" attrs="{'invisible':True}"/>   
+                                    <field name="module_msg91_gateway" class="oe_inline"  />
+                                    <label for="module_msg91_gateway" />
+                                </div>
+                                <div attrs="{'invisible':[('is_mobily_in_addon','=',False)]}" > 
+                                    <field name="is_mobily_in_addon" attrs="{'invisible':True}"/>   
+                                    <field name="module_mobily_gateway" class="oe_inline"  />
+                                    <label for="module_mobily_gateway" />
+                                </div>
+                            </div>
+                        </div>  
+                    </group>
+                </xpath>
+            </field>
+        </record>       
+    </data>
+</openerp>

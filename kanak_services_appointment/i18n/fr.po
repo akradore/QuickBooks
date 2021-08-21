@@ -1,0 +1,853 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* kanak_services_appointment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-05 05:55+0000\n"
+"PO-Revision-Date: 2016-07-05 05:55+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: kanak_services_appointment
+#: model:mail.template,body_html:kanak_services_appointment.kanak_calendar_booking
+msgid "\n"
+"                \n"
+"                <div style=\"border-radius: 2px; max-width: 1200px; height: auto;margin-left: auto;margin-right: auto;\">\n"
+"                    <div style=\"height:auto;text-align: center;font-size : 30px;color: #8A89BA;\">\n"
+"                        <strong>Your Booking</strong>\n"
+"                    </div>\n"
+"                    <div style=\"text-align: left;font-size : 14px;margin-top:10px\">\n"
+"                        <h3>Booked: ${object.partner_id.name}  ${object.partner_id.email}</h3>\n"
+"                        <hr/>\n"
+"                        <h3>Booking Details:</h3>\n"
+"                        <p>Booking: ${object.event_id.app_partner_id.name}</p>\n"
+"                        <p>Start : ${object.get_user_tz_date()}</p>\n"
+"                        % if object.event_id.app_duration>1:\n"
+"                            <p>Duration     : ${object.event_id.app_duration}  hours </p>\n"
+"                        % else:\n"
+"                            <p>Duration     : ${object.event_id.app_duration}  minutes</p>\n"
+"                        % endif\n"
+"                        <p>Their timezone: ${object.partner_id.tz}</p>\n"
+"                        <p>Their start time: ${object.event_id.date_appointment}</p>\n"
+"                        <hr/>\n"
+"                        <p>Phone Number : ${object.partner_id.phone}</p>\n"
+"                        <p>Name   : ${object.partner_id.name}</p>\n"
+"                        <p>Email        : ${object.partner_id.email}</p>\n"
+"                    </div>\n"
+"                </div>\n"
+"                <a style=\"padding: 8px 30px 8px 30px;border-radius: 6px;border: 1px solid #CCCCCC;background:#8A89BA;margin : 0 15px 0 0;text-decoration: none;color:#FFFFFF;\" href=\"/kanak/appointment/reschedule/${object.event_id.app_partner_id.id}?token=${object.access_token}\">Reschedule Booking</a>\n"
+"                <a style=\"padding: 8px 30px 8px 30px;border-radius: 6px;border: 1px solid #CCCCCC;background:#808080;margin : 0 15px 0 0;text-decoration: none;color:#FFFFFF;\" href=\"/kanak/appointment/cancel/${object.event_id.app_partner_id.id}?token=${object.access_token}\">Cancel Booking</a>\n"
+"                \n"
+"            "
+msgstr "\n"
+"                \n"
+"                <div style=\"border-radius: 2px; max-width: 1200px; height: auto;margin-left: auto;margin-right: auto;\">\n"
+"                    <div style=\"height:auto;text-align: center;font-size : 30px;color: #8A89BA;\">\n"
+"                        <strong>Your Booking</strong>\n"
+"                    </div>\n"
+"                    <div style=\"text-align: left;font-size : 14px;margin-top:10px\">\n"
+"                        <h3>Booked: ${object.partner_id.name}  ${object.partner_id.email}</h3>\n"
+"                        <hr/>\n"
+"                        <h3>Booking Details:</h3>\n"
+"                        <p>Booking: ${object.event_id.app_partner_id.name}</p>\n"
+"                        <p>Start : ${object.get_user_tz_date()}</p>\n"
+"                        % if object.event_id.app_duration>1:\n"
+"                            <p>Duration     : ${object.event_id.app_duration}  hours </p>\n"
+"                        % else:\n"
+"                            <p>Duration     : ${object.event_id.app_duration}  minutes</p>\n"
+"                        % endif\n"
+"                        <p>Their timezone: ${object.partner_id.tz}</p>\n"
+"                        <p>Their start time: ${object.event_id.date_appointment}</p>\n"
+"                        <hr/>\n"
+"                        <p>Phone Number : ${object.partner_id.phone}</p>\n"
+"                        <p>Name   : ${object.partner_id.name}</p>\n"
+"                        <p>Email        : ${object.partner_id.email}</p>\n"
+"                    </div>\n"
+"                </div>\n"
+"                <a style=\"padding: 8px 30px 8px 30px;border-radius: 6px;border: 1px solid #CCCCCC;background:#8A89BA;margin : 0 15px 0 0;text-decoration: none;color:#FFFFFF;\" href=\"/kanak/appointment/reschedule/${object.event_id.app_partner_id.id}?token=${object.access_token}\">Reschedule Booking</a>\n"
+"                <a style=\"padding: 8px 30px 8px 30px;border-radius: 6px;border: 1px solid #CCCCCC;background:#808080;margin : 0 15px 0 0;text-decoration: none;color:#FFFFFF;\" href=\"/kanak/appointment/cancel/${object.event_id.app_partner_id.id}?token=${object.access_token}\">Cancel Booking</a>\n"
+"                \n"
+"            "
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_sale_order_count
+msgid "# of Sales Order"
+msgstr "# of Sales Order"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_book
+msgid "* Email:"
+msgstr "* Email:"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_book
+msgid "* First Name:"
+msgstr "* First Name:"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_book
+msgid "* Last Name:"
+msgstr "* Last Name:"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_book
+msgid "* Phone Number:"
+msgstr "* Phone Number:"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_cart
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_payment
+msgid "<b>Appointment Datetime:</b>"
+msgstr "<b>Nomination Datetime:</b>"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "<b>Fri</b>"
+msgstr "<b>Ven</b>"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "<b>Mon</b>"
+msgstr "<b>Lun</b>"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "<b>Sat</b>"
+msgstr "<b>Sam</b>"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "<b>Sun</b>"
+msgstr "<b>Dim</b>"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "<b>Thu</b>"
+msgstr "<b>Jeu</b>"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "<b>Tue</b>"
+msgstr "<b>Mar</b>"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "<b>Wed</b>"
+msgstr "<b>Mer</b>"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_cart
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_payment
+msgid "<br/>\n"
+"              <b>Appointment with:</b>"
+msgstr "<br/>\n"
+"              <b>Rendez-vous avec:</b>"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.service_saleorder_document
+msgid "<br/>\n"
+"              Appointment with:"
+msgstr "<br/>\n"
+"              Rendez-vous avec:"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "<i class=\"fa fa-play-circle-o\"/>\n"
+"                                HOW TO BOOK VIDEO"
+msgstr "<i class=\"fa fa-play-circle-o\"/>\n"
+"                                COMMENT RESERVER VIDEO"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "<span>No Availability</span>"
+msgstr "<span>No Availability</span>"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_fri_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_mon_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_sat_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_sun_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_thu_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_tue_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_wed_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_fri_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_mon_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_sat_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_sun_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_thu_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_tue_from
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_wed_from
+msgid "AM"
+msgstr "AM"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_property_account_payable_id
+msgid "Account Payable"
+msgstr "Account Payable"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_property_account_receivable_id
+msgid "Account Receivable"
+msgstr "Account Receivable"
+
+#. module: kanak_services_appointment
+#: selection:calendar.event,type:0
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_attendees_ids
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_attendees_ids
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_sale_order_line_appointment_id
+#: model:ir.module.category,name:kanak_services_appointment.module_category_appointment
+#: model:website.menu,name:kanak_services_appointment.menu_kanak_services_appointment
+msgid "Appointment"
+msgstr "Rendez-vous"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_partner_appointment
+msgid "Appointment Configuration"
+msgstr "Rendez-vous Configuration"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_app_date
+msgid "Appointment Datetime"
+msgstr "Rendez-vous Datetime"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.service_saleorder_document
+msgid "Appointment Datetime:"
+msgstr "Rendez-vous Datetime:"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_app_state
+msgid "Appointment State"
+msgstr "Rendez-vous Etat"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_app_time
+msgid "Appointment Time"
+msgstr "Rendez-vous Temps"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_book
+msgid "Appointment:"
+msgstr "Rendez-vous:"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_cancel
+msgid "Are you sure you wish to cancel this appointment?"
+msgstr "Are you sure you wish to cancel this appointment?"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_reschedule
+msgid "Are you sure you wish to reschedule your booking?"
+msgstr "Are you sure you wish to reschedule your booking?"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_select_partner
+msgid "At"
+msgstr "À"
+
+#. module: kanak_services_appointment
+#: model:ir.model,name:kanak_services_appointment.model_calendar_attendee
+msgid "Attendee information"
+msgstr "Information du participant"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_calendar_event_form_inherit
+msgid "Attendees"
+msgstr "Participants"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_team_member
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_team_member
+msgid "Available For Appointment"
+msgstr "Disponible Pour Rendez-vous"
+
+#. module: kanak_services_appointment
+#: model:res.groups,name:kanak_services_appointment.group_appointment_avalable
+msgid "Avalable"
+msgstr "Avalable"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "BOOKING CALENDAR"
+msgstr "CALENDRIER DES RÉSERVATIONS"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_bank_account_count
+msgid "Bank"
+msgstr "Banque"
+
+#. module: kanak_services_appointment
+#: selection:calendar.event,status:0
+msgid "Booked"
+msgstr "Réservé"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.menu,name:kanak_services_appointment.menu_apppointment_calendar_second_menu
+msgid "Calendar"
+msgstr "Calendrier"
+
+#. module: kanak_services_appointment
+#: selection:calendar.event,app_state:0
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_book
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_ref_company_ids
+msgid "Companies that refers to partner"
+msgstr "Companies that refers to partner"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_book
+msgid "Confirm Booking"
+msgstr "Confirmer la réservation"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_cancel
+msgid "Confirm Cancellation"
+msgstr "Confirm Cancellation"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_reschedule
+msgid "Confirm Reschedule"
+msgstr "Confirm Reschedule"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_contract_ids
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_contracts_count
+msgid "Contracts"
+msgstr "Contracts"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_payment_method_count
+msgid "Count Payment Method"
+msgstr "Nombre de méthodes de paiement"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_currency_id
+msgid "Currency"
+msgstr "Devise"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_property_payment_term_id
+msgid "Customer Payment Term"
+msgstr "Customer Payment Term"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_partner_appointment
+msgid "Date"
+msgstr "Date"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_date_appointment
+msgid "Date format in user timezone"
+msgstr "Date format in user timezone"
+
+#. module: kanak_services_appointment
+#: selection:calendar.event,app_state:0
+msgid "Done"
+msgstr "Done"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_app_duration
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_calendar_event_form_popup_inherit
+msgid "Duration"
+msgstr "Durée"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_partner_appointment
+msgid "End"
+msgstr "Fin"
+
+#. module: kanak_services_appointment
+#: model:ir.model,name:kanak_services_appointment.model_calendar_event
+msgid "Event"
+msgstr "Évènement"
+
+#. module: kanak_services_appointment
+#: selection:calendar.event,type:0
+msgid "Exception"
+msgstr "Exception"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_calendar_event_form_inherit
+msgid "Exception Subject"
+msgstr "Exception Sujet"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_exraoffset
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_exraoffset
+msgid "Exraoffset"
+msgstr "Exraoffset"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_property_account_position_id
+msgid "Fiscal Position"
+msgstr "Régime fiscal"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_fri
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_fri
+msgid "Friday"
+msgstr "Vendredi"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_has_unreconciled_entries
+msgid "Has unreconciled entries"
+msgstr "A des écritures non lettrées"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_invoice_ids
+msgid "Invoices"
+msgstr "Factures"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_issued_total
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_journal_item_count
+msgid "Journal Items"
+msgstr "Écritures comptables"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "Jump To date:"
+msgstr "Aller à ce jour:"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_last_website_so_id
+msgid "Last Online Sale Order"
+msgstr "Dernière vente en ligne"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_calendar_last_notif_ack
+msgid "Last notification marked as read from base Calendar"
+msgstr "Dernière notification lue dans la base Agenda"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_users_last_time_entries_checked
+msgid "Last time the invoices & payments matching was performed for this partner. It is set either if there's not at least an unreconciled debit and an unreconciled credit or if you click the \"Done\" button."
+msgstr "La dernière fois que la correspondance des factures et des paiements a été faite pour ce partenaire. C'est configuré que s'il n'y a pas au moins un débit et un crédit non lettré ou si vous cliquez sur le bouton \"Fait\"."
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_last_time_entries_checked
+msgid "Latest Invoices & Payments Matching Date"
+msgstr "Date de dernière correspondance des factures et des paiements"
+
+#. module: kanak_services_appointment
+#: selection:calendar.event,status:0
+msgid "Locked"
+msgstr "Locked"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_login
+msgid "Login"
+msgstr "Login"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_lunch_end
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_lunch_end
+msgid "Lunch End"
+msgstr "déjeuner Fin"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_lunch_start
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_lunch_start
+msgid "Lunch Start"
+msgstr "déjeuner Début"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_max_date
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_max_date
+msgid "Max date"
+msgstr "Date Max"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_app_partner_id
+msgid "Meeting With"
+msgstr "Meeting With"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_kanak_exception_calendar
+msgid "Meetings"
+msgstr "Rendez-vous"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_min_date
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_min_date
+msgid "Min date"
+msgstr "Date Min"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_mon
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_mon
+msgid "Monday"
+msgstr "Lundi"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.menu,name:kanak_services_appointment.menu_apppointment_calendar
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_partner_appointment
+msgid "My Appointments"
+msgstr "Mes rendez-vous"
+
+#. module: kanak_services_appointment
+#: model:ir.actions.act_window,name:kanak_services_appointment.view_appointment_appointment_action
+#: model:ir.ui.menu,name:kanak_services_appointment.menu_exception_calendar_submenu
+msgid "My Calendar"
+msgstr "My Calendar"
+
+#. module: kanak_services_appointment
+#: model:ir.actions.act_window,name:kanak_services_appointment.view_appointment_exception_action
+#: model:ir.ui.menu,name:kanak_services_appointment.menu_exception_calendar_submenu_2
+msgid "My Exception"
+msgstr "Mon Exception"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_partner_appointment
+msgid "My Exceptions"
+msgstr "Mon Exception"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_reschedule
+msgid "New start time:"
+msgstr "New start time:"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_number_of_days_temp
+msgid "No. of Days"
+msgstr "Nombre de jours"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_cart
+msgid "Notes:"
+msgstr "Remarques:"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_reschedule
+msgid "Old start time:"
+msgstr "Old start time:"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_fri_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_mon_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_sat_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_sun_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_thu_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_tue_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_wed_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_fri_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_mon_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_sat_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_sun_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_thu_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_tue_to
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_wed_to
+msgid "PM"
+msgstr "PM"
+
+#. module: kanak_services_appointment
+#: model:ir.model,name:kanak_services_appointment.model_res_partner
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_debit_limit
+msgid "Payable Limit"
+msgstr "Payable Limit"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_payment_method_ids
+msgid "Payment Methods"
+msgstr "Méthode de paiement"
+
+#. module: kanak_services_appointment
+#: model:ir.model,name:kanak_services_appointment.model_payment_transaction
+msgid "Payment Transaction"
+msgstr "Transaction"
+
+#. module: kanak_services_appointment
+#: selection:calendar.event,app_state:0
+msgid "Pending"
+msgstr "Pending"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_cancel
+msgid "Please give a reason for cancelling this booking:"
+msgstr "Please give a reason for cancelling this booking:"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_select_partner
+msgid "Please select one of our team members."
+msgstr "S'il vous plaît sélectionner un de nos membres de l'équipe."
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_partner_appointment
+msgid "Privacy"
+msgstr "Confidentialité"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_team_ids
+msgid "Related Team Member"
+msgstr "Related Team Member"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_partner_appointment
+msgid "Related User"
+msgstr "utilisateur connexes"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_line_id
+msgid "Sale Order Line"
+msgstr "Vente Ligne de commande"
+
+#. module: kanak_services_appointment
+#: model:ir.model,name:kanak_services_appointment.model_sale_order
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_sale_order_ids
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: kanak_services_appointment
+#: model:ir.model,name:kanak_services_appointment.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_sat
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_sat
+msgid "Saturday"
+msgstr "samedi"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_select_partner
+msgid "Select\n"
+"                                                    <i class=\"fa fa-chevron-circle-right\"/>"
+msgstr "Sélectionner\n"
+"                                                    <i class=\"fa fa-chevron-circle-right\"/>"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_product_id
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_product_id
+msgid "Service"
+msgstr "Un service"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_minutes_slot
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_minutes_slot
+msgid "Slot in mins."
+msgstr "Fente en min."
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_partner_appointment
+msgid "Start"
+msgstr "Démarrer"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_status
+msgid "Status"
+msgstr "Statut"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.view_partner_appointment
+msgid "Subject"
+msgstr "Assujettir"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_sun
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_sun
+msgid "Sunday"
+msgstr "dimanche"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_book
+msgid "Team member:"
+msgstr "Team member:"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_thankyou
+msgid "Thank You"
+msgstr "Thank You"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_cancel_thankyou
+msgid "Thank You. Your appointment has been cancelled."
+msgstr "Thank You. Your appointment has been cancelled."
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_users_property_account_position_id
+msgid "The fiscal position will determine taxes and accounts used for the partner."
+msgstr "The fiscal position will determine taxes and accounts used for the partner."
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_users_has_unreconciled_entries
+msgid "The partner has at least one unreconciled debit and credit since last time the invoices & payments matching was performed."
+msgstr "Le partenaire a au moins un débit et un crédit non lettré depuis le dernier lettrage des factures et des paiements."
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_users_property_account_payable_id
+msgid "This account will be used instead of the default one as the payable account for the current partner"
+msgstr "This account will be used instead of the default one as the payable account for the current partner"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_users_property_account_receivable_id
+msgid "This account will be used instead of the default one as the receivable account for the current partner"
+msgstr "This account will be used instead of the default one as the receivable account for the current partner"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_users_property_supplier_payment_term_id
+msgid "This payment term will be used instead of the default one for purchase orders and vendor bills"
+msgstr "Ce délai de paiement sera utilisé à la place de celui par défaut pour les bons de commande et les factures fournisseurs"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_users_property_payment_term_id
+msgid "This payment term will be used instead of the default one for sale orders and customer invoices"
+msgstr "This payment term will be used instead of the default one for sale orders and customer invoices"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_thu
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_thu
+msgid "Thursday"
+msgstr "Jeudi"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_reschedule
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "Time Zone:"
+msgstr "Fuseau horaire:"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_total_invoiced
+msgid "Total Invoiced"
+msgstr "Total Invoiced"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_debit
+msgid "Total Payable"
+msgstr "Total Payable"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_credit
+msgid "Total Receivable"
+msgstr "Total Receivable"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_users_credit
+msgid "Total amount this customer owes you."
+msgstr "Total amount this customer owes you."
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_users_debit
+msgid "Total amount you have to pay to this vendor."
+msgstr "Montant total à payer au fournisseur."
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_tue
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_tue
+msgid "Tuesday"
+msgstr "Mardi"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_type
+msgid "Type"
+msgstr "Type"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_partner_login
+msgid "Used to log into the system"
+msgstr "Used to log into the system"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_click_time_dt
+msgid "User Click Datetime"
+msgstr "User Click Datetime"
+
+#. module: kanak_services_appointment
+#: model:ir.model,name:kanak_services_appointment.model_res_users
+msgid "Users"
+msgstr "Utilisateurs"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,help:kanak_services_appointment.field_res_users_currency_id
+msgid "Utility field to express amount currency"
+msgstr "Champ utile pour indiquer le montant de la monnaie"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_property_supplier_payment_term_id
+msgid "Vendor Payment Term"
+msgstr "Condition de règlement fournisseur"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_select_partner
+msgid "WE WHOULD LOVE TO TALK TO YOU!"
+msgstr "NOUS whould AIMONS DE PARLER À VOUS !"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_wed
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_wed
+msgid "Wednesday"
+msgstr "Mercredi"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_cancel
+msgid "You are about to cancel the following booking:"
+msgstr "You are about to cancel the following booking:"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_reschedule
+msgid "You are about to change the start time of your booking."
+msgstr "You are about to change the start time of your booking."
+
+#. module: kanak_services_appointment
+#: code:addons/kanak_services_appointment/models/calendar.py:79
+#, python-format
+msgid "You can not have 2 exceptions that overlaps on same day!"
+msgstr "You can not have 2 exceptions that overlaps on same day!"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_member_calendar
+msgid "You may\n"
+"                                <b>click on the time</b>\n"
+"                                you wish to make your appointment or\n"
+"                                <b>watch instruction video.</b>"
+msgstr "Tu peux\n"
+"                                <b>cliquez sur le temps</b>\n"
+"                                vous souhaitez prendre rendez-vous ou\n"
+"                                <b>regarder instruction vidéo.</b>"
+
+#. module: kanak_services_appointment
+#: model:mail.template,subject:kanak_services_appointment.kanak_calendar_booking
+msgid "Your Booking"
+msgstr "Your Booking"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_thankyou
+msgid "Your appointment is booked for"
+msgstr "Your appointment is booked for"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.appointment_cart
+msgid "Your comments..."
+msgstr "Your comments..."
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_appointment_ids
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_partner_exception_ids
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_appointment_ids
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_res_users_exception_ids
+msgid "exceptions"
+msgstr "exceptions"
+
+#. module: kanak_services_appointment
+#: model:ir.model.fields,field_description:kanak_services_appointment.field_calendar_event_app_tz
+msgid "timezone"
+msgstr "timezone"
+
+#. module: kanak_services_appointment
+#: model:ir.ui.view,arch_db:kanak_services_appointment.kanak_select_partner
+msgid "we value your openion.If you have any questions, suggestions or concerns please feel free to contact us through mail, email or our main phone number.Don't forget to follow us on the social websites we blogns to."
+msgstr "nous apprécions votre opinion.Si vous avez des questions, suggestions ou préoccupations se sentir s'il vous plaît à nous contacter par courrier, e-mail ou notre numéro de téléphone principal.Ne pas oublier de nous suivre sur les sites sociaux nous de blogns à ."
+
